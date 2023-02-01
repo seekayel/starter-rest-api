@@ -63,7 +63,7 @@ app.get('/:col', async (req, res) => {
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
   console.log('on a zoom call')
-  res.json({ msg: 'no route handler found, sorry' }).end()
+  res.json({ msg: 'try /:col' }).end()
 })
 
 // Start the server
