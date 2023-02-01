@@ -63,7 +63,7 @@ app.get('/:col', async (req, res) => {
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
   console.log('on a zoom call')
-  res.json({ msg: 'try GET /:col or POST /:col/:key' }).end()
+  res.json({ msg: 'To read: GET /:col or to write: POST /:col/:key' }).end()
 })
 
 // Start the server
