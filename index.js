@@ -28,6 +28,7 @@ app.post('/:col/:key', async (req, res) => {
   console.log(`from collection: ${col} delete key: ${key} with params ${JSON.stringify(req.params)}`)
   const item = await db.collection(col).set(key, req.body)
   console.log(JSON.stringify(item, null, 2))
+  res.cookie('last', Date.now())
   res.json(item).end()
 })
 
@@ -38,6 +39,7 @@ app.delete('/:col/:key', async (req, res) => {
   console.log(`from collection: ${col} delete key: ${key} with params ${JSON.stringify(req.params)}`)
   const item = await db.collection(col).delete(key)
   console.log(JSON.stringify(item, null, 2))
+  res.cookie('last', Date.now())
   res.json(item).end()
 })
 
@@ -48,6 +50,7 @@ app.get('/:col/:key', async (req, res) => {
   console.log(`from collection: ${col} get key: ${key} with params ${JSON.stringify(req.params)}`)
   const item = await db.collection(col).get(key)
   console.log(JSON.stringify(item, null, 2))
+  res.cookie('last', Date.now())
   res.json(item).end()
 })
 
@@ -57,12 +60,13 @@ app.get('/:col', async (req, res) => {
   console.log(`list collection: ${col} with params: ${JSON.stringify(req.params)}`)
   const items = await db.collection(col).list()
   console.log(JSON.stringify(items, null, 2))
+  res.cookie('last', Date.now())
   res.json(items).end()
 })
 
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
-  console.log('on a zoom call')
+  res.cookie('last', Date.now())
   res.json({ msg: 'To read: GET /:col or to write: POST /:col/:key' }).end()
 })
 
