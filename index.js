@@ -66,6 +66,7 @@ app.get('/:col', async (req, res) => {
 
 // Catch all handler for all other request.
 app.use('*', (req, res) => {
+  console.log(`processing ${req.method} on ${req.path}`)
   res.cookie('last', Date.now())
   res.json({ msg: 'To read: GET /:col or to write: POST /:col/:key' }).end()
 })
